@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loft Mahmoud Awed</title>
+  <style>
+    /* =====================================================================
+       LUXURY DARK OBSIDIAN & GOLD THEME TOKENS
+       ===================================================================== */
+    :root {
+      --bg-obsidian: #0a0d14;
+      --surface-card: #121724;
+      --surface-elevated: #161d2c;
+      --surface-input: #0b0f18;
+      --border-subtle: #1e283c;
+      --border-metal: #26324a;
+      --gold: #d4af37;
+      --gold-bright: #e2c055;
+      --gold-dim: rgba(212, 175, 55, 0.14);
+      --gold-border: rgba(226, 192, 85, 0.42);
+      --male: #60a5fa;
+      --male-bg: rgba(96, 165, 250, 0.14);
+      --male-border: rgba(96, 165, 250, 0.36);
+      --female: #fb7185;
+      --female-bg: rgba(251, 113, 133, 0.14);
+      --female-border: rgba(251, 113, 133, 0.36);
+      --danger: #f87171;
+      --danger-bg: rgba(248, 113, 113, 0.14);
+      --danger-border: rgba(248, 113, 113, 0.36);
+      --success: #4ade80;
+      --success-bg: rgba(74, 222, 128, 0.14);
+      --success-border: rgba(74, 222, 128, 0.36);
+      --text-primary: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.45;
+      padding-bottom: 56px;
+      color-scheme: dark;
+    }
+
+    /* =====================================================================
+       HEADER & NAVIGATION (Offspring, Parents, Add, Backup)
+       ===================================================================== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: linear-gradient(180deg, #131927 0%, #0d121c 100%);
+      border-bottom: 1px solid var(--border-metal);
+      padding: 14px 18px;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.35px;
+      color: var(--gold-bright);
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      background: var(--surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-metal);
+      border-radius: var(--radius-sm);
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--gold-border);
+      color: var(--gold-bright);
+    }
+
+    .nav-btn.active {
+      background: var(--gold-dim);
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+    }
+
+    /* =====================================================================
+       MAIN CONTAINER, CARDS, FORMS & BUTTONS
+       ===================================================================== */
+    .main-container {
+      max-width: 1200px;
+      margin: 22px auto 0;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-metal);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+
+    .section-meta {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    input[type="text"],
+    input[type="search"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--surface-input);
+      color: var(--text-primary);
+      border: 1px solid var(--border-metal);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold-bright);
+    }
+
+    textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    .search-input {
+      flex: 1 1 240px;
+      max-width: 340px;
+    }
+
+    .filter-select {
+      width: auto;
+      min-width: 150px;
+    }
+
+    .btn {
+      background: var(--surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-metal);
+      border-radius: var(--radius-sm);
+      padding: 9px 14px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--gold-border);
+      color: var(--gold-bright);
+    }
+
+    .btn-gold {
+      background: var(--gold-dim);
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+    }
+
+    .btn-gold:hover {
+      background: rgba(212, 175, 55, 0.24);
+    }
+
+    .btn-danger {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+      color: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: rgba(248, 113, 113, 0.24);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .badge-male {
+      color: var(--male);
+      background: var(--male-bg);
+      border-color: var(--male-border);
+    }
+
+    .badge-female {
+      color: var(--female);
+      background: var(--female-bg);
+      border-color: var(--female-border);
+    }
+
+    .badge-parent {
+      color: var(--gold-bright);
+      background: var(--gold-dim);
+      border-color: var(--gold-border);
+    }
+
+    .bird-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .bird-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .bird-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .bird-ring {
+      font-size: 1.04rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .bird-year {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .bird-line {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    .bird-line strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .bird-notes {
+      margin-top: 8px;
+      padding: 8px 10px;
+      background: var(--surface-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      color: var(--text-primary);
+      white-space: pre-line;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .pedigree-box-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .ancestor-card {
+      background: var(--surface-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 11px;
+    }
+
+    .ancestor-title {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 8px;
+    }
+
+    .ancestor-fields {
+      display: grid;
+      grid-template-columns: 1.45fr 0.85fr;
+      gap: 8px;
+    }
+
+    .ancestor-details {
+      grid-column: 1 / -1;
+    }
+
+    .status-msg {
+      display: none;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .status-msg.show {
+      display: block;
+    }
+
+    .status-success {
+      background: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success);
+    }
+
+    .status-error {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      color: var(--danger);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 36px 16px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    /* =====================================================================
+       CLASSIC EUROPEAN 4-COLUMN A4 LANDSCAPE PEDIGREE CERTIFICATE
+       - Strictly A4 Landscape: 297mm x 210mm (printable area: 287mm x 200mm)
+       - Pure white background (#ffffff), thin typography (300/400)
+       - No column header labels, no logos inside certificate
+       - Connecting bracket lines linking each generation
+       ===================================================================== */
+    .pedigree-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: rgba(5, 8, 13, 0.92);
+      overflow: auto;
+      padding: 18px;
+    }
+
+    .pedigree-modal-backdrop.open {
+      display: block;
+    }
+
+    .pedigree-controls {
+      width: 297mm;
+      min-width: 297mm;
+      margin: 0 auto 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .pedigree-sheet {
+      width: 297mm;
+      min-width: 297mm;
+      max-width: 297mm;
+      height: 210mm;
+      min-height: 210mm;
+      max-height: 210mm;
+      aspect-ratio: 297 / 210;
+      margin: 0 auto;
+      background: #ffffff;
+      color: #111827;
+      padding: 6mm 7mm;
+      border-radius: 3px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .cert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 0.75pt solid #9ca3af;
+      padding-bottom: 3.5px;
+      margin-bottom: 5px;
+      font-weight: 300;
+      color: #111827;
+      flex-shrink: 0;
+    }
+
+    .cert-subject-headline {
+      font-size: 11.5pt;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #0f172a;
+    }
+
+    .cert-loft-info {
+      font-size: 8.8pt;
+      font-weight: 300;
+      color: #374151;
+    }
+
+    .pedigree-4col {
+      display: grid;
+      grid-template-columns: 0.98fr 1.04fr 1.02fr 0.96fr;
+      gap: 0;
+      align-items: stretch;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .ped-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      padding: 0 8px;
+      min-height: 0;
+    }
+
+    .ped-col:first-child {
+      padding-left: 0;
+    }
+
+    .ped-col:last-child {
+      padding-right: 0;
+    }
+
+    .ped-col-1-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      position: relative;
+      padding: 2px 0;
+    }
+
+    .ped-col-1-wrap::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      width: 8px;
+      border-top: 0.75pt solid #6b7280;
+      pointer-events: none;
+    }
+
+    .ped-pair {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      position: relative;
+      padding: 1.5px 0;
+      min-height: 0;
+    }
+
+    /* Bracket linking 2 parent boxes on the left to their child on the left */
+    .ped-col:not(:first-child) .ped-pair::before {
+      content: "";
+      position: absolute;
+      top: 24%;
+      bottom: 24%;
+      left: -8px;
+      width: 8px;
+      border-top: 0.75pt solid #6b7280;
+      border-left: 0.75pt solid #6b7280;
+      border-bottom: 0.75pt solid #6b7280;
+      pointer-events: none;
+    }
+
+    /* Horizontal stem extending right from each node in cols 2 & 3 to the next generation bracket */
+    .ped-col:nth-child(2) .ped-node,
+    .ped-col:nth-child(3) .ped-node {
+      position: relative;
+    }
+
+    .ped-col:nth-child(2) .ped-node::after,
+    .ped-col:nth-child(3) .ped-node::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      width: 8px;
+      border-top: 0.75pt solid #6b7280;
+      pointer-events: none;
+    }
+
+    .ped-node {
+      flex: 1;
+      background: #ffffff;
+      color: #111827;
+      border: 0.65pt solid #9ca3af;
+      border-radius: 0;
+      padding: 3.5px 6px;
+      margin: 1.5px 0;
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .ped-col:first-child .ped-node {
+      flex: 0 1 auto;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 8px 9px;
+      border: 0.75pt solid #6b7280;
+    }
+
+    .ped-node-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 4px;
+      border-bottom: 0.5pt solid #d1d5db;
+      padding-bottom: 1.5px;
+      margin-bottom: 2.5px;
+    }
+
+    .ped-ring {
+      font-size: 8.3pt;
+      font-weight: 400;
+      color: #0f172a;
+      line-height: 1.18;
+      word-break: break-word;
+    }
+
+    .ped-col:first-child .ped-ring {
+      font-size: 10pt;
+    }
+
+    .ped-symbol {
+      font-size: 8.4pt;
+      font-weight: 400;
+      color: #374151;
+      flex-shrink: 0;
+    }
+
+    .ped-title {
+      font-size: 7.5pt;
+      font-weight: 400;
+      color: #1e293b;
+      line-height: 1.18;
+      word-break: break-word;
+    }
+
+    .ped-sub {
+      font-size: 6.9pt;
+      font-weight: 300;
+      color: #334155;
+      line-height: 1.18;
+      margin-top: 2px;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    .loft-contact-block {
+      margin-top: 8px;
+      padding: 6px 8px;
+      border-top: 0.65pt solid #9ca3af;
+      font-size: 7.8pt;
+      font-weight: 300;
+      color: #1f2937;
+      line-height: 1.35;
+    }
+
+    .loft-contact-block strong {
+      font-weight: 400;
+      color: #0f172a;
+    }
+
+    /* =====================================================================
+       STRICT A4 LANDSCAPE PRINT RULES (297mm x 210mm, 5mm margin -> 287x200)
+       ===================================================================== */
+    @page {
+      size: A4 landscape;
+      margin: 5mm;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html,
+      body {
+        width: 287mm;
+        height: 200mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #111827 !important;
+        overflow: hidden !important;
+      }
+
+      .app-header,
+      .main-container,
+      .pedigree-controls,
+      .status-msg {
+        display: none !important;
+      }
+
+      .pedigree-modal-backdrop {
+        display: block !important;
+        position: static !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .pedigree-sheet {
+        width: 287mm !important;
+        min-width: 287mm !important;
+        max-width: 287mm !important;
+        height: 200mm !important;
+        min-height: 200mm !important;
+        max-height: 200mm !important;
+        aspect-ratio: 297 / 210 !important;
+        margin: 0 !important;
+        padding: 3mm 4mm !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #111827 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      .cert-header {
+        padding-bottom: 2.5px;
+        margin-bottom: 4px;
+      }
+
+      .cert-subject-headline {
+        font-size: 10.5pt;
+        font-weight: 400;
+      }
+
+      .cert-loft-info {
+        font-size: 8.2pt;
+        font-weight: 300;
+      }
+
+      .pedigree-4col {
+        height: calc(100% - 26px);
+      }
+
+      .ped-node {
+        padding: 2.5px 5px;
+        margin: 1.2px 0;
+        border: 0.6pt solid #9ca3af;
+      }
+
+      .ped-col:first-child .ped-node {
+        padding: 6px 7px;
+      }
+
+      .ped-ring {
+        font-size: 7.8pt;
+      }
+
+      .ped-col:first-child .ped-ring {
+        font-size: 9.4pt;
+      }
+
+      .ped-title {
+        font-size: 7pt;
+      }
+
+      .ped-sub {
+        font-size: 6.4pt;
+        line-height: 1.14;
+      }
+
+      .loft-contact-block {
+        padding: 4px 6px;
+        font-size: 7.3pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div>
+        <div class="brand-title">Loft Mahmoud Awed</div>
+        <div class="brand-subtitle">Tanta &bull; 01069696229</div>
+      </div>
+      <nav class="nav-tabs" aria-label="Main navigation">
+        <button type="button" class="nav-btn active" data-tab="offspring" onclick="switchTab('offspring')">Offspring</button>
+        <button type="button" class="nav-btn" data-tab="parents" onclick="switchTab('parents')">Parents</button>
+        <button type="button" class="nav-btn" data-tab="add" onclick="switchTab('add')">Add</button>
+        <button type="button" class="nav-btn" data-tab="backup" onclick="switchTab('backup')">Backup</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div id="statusBanner" class="status-msg" role="status" aria-live="polite"></div>
+
+    <!-- OFFSPRING TAB (DEFAULT) -->
+    <section id="tab-offspring" class="tab-panel">
+      <div class="card">
+        <div class="section-header">
+          <h1 class="section-title">Offspring Records</h1>
+          <span id="offspringCount" class="section-meta">0 birds</span>
+        </div>
+        <div class="toolbar">
+          <input type="search" id="offspringSearch" class="search-input" placeholder="Search ring, year, sire, dam, notes..." oninput="renderOffspring()" />
+          <select id="offspringGenderFilter" class="filter-select" onchange="renderOffspring()">
+            <option value="all">All Genders</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <button type="button" class="btn btn-gold" onclick="openAddOffspring()">+ Add Offspring</button>
+        </div>
+        <div id="offspringList" class="bird-grid"></div>
+      </div>
+    </section>
+
+    <!-- PARENTS TAB -->
+    <section id="tab-parents" class="tab-panel" style="display:none;">
+      <div class="card">
+        <div class="section-header">
+          <h2 class="section-title">Breeding Parents &amp; Lineages</h2>
+          <span id="parentsCount" class="section-meta">0 lineages</span>
+        </div>
+        <div class="toolbar">
+          <input type="search" id="parentsSearch" class="search-input" placeholder="Search ring, year, details..." oninput="renderParents()" />
+          <button type="button" class="btn btn-gold" onclick="openAddParent()">+ Add Parent Lineage</button>
+        </div>
+        <div id="parentsList" class="bird-grid"></div>
+      </div>
+    </section>
+
+    <!-- ADD / EDIT TAB -->
+    <section id="tab-add" class="tab-panel" style="display:none;">
+      <div class="card">
+        <div class="section-header">
+          <h2 id="formHeading" class="section-title">Add New Record</h2>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" id="modeOffspringBtn" class="btn btn-gold" onclick="setFormMode('offspring')">Offspring Entry</button>
+            <button type="button" id="modeParentBtn" class="btn" onclick="setFormMode('parent')">Parent Lineage Entry</button>
+          </div>
+        </div>
+
+        <form id="birdForm" onsubmit="saveRecord(event)">
+          <input type="hidden" id="editId" value="" />
+          <input type="hidden" id="recordType" value="offspring" />
+
+          <!-- Offspring Entry Form -->
+          <div id="offspringFields">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="ringNumber">Ring Number *</label>
+                <input type="text" id="ringNumber" required placeholder="e.g. EGY-2026-104" />
+              </div>
+              <div class="form-group">
+                <label for="birdYear">Year *</label>
+                <input type="text" id="birdYear" required placeholder="e.g. 2026" />
+              </div>
+              <div class="form-group">
+                <label for="birdGender">Gender *</label>
+                <select id="birdGender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sireSelect">Sire (Father)</label>
+                <select id="sireSelect">
+                  <option value="">-- Select Sire --</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="damSelect">Dam (Mother)</label>
+                <select id="damSelect">
+                  <option value="">-- Select Dam --</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label for="birdNotes">Notes</label>
+              <textarea id="birdNotes" placeholder="Race results, color, eye sign, training notes..."></textarea>
+            </div>
+          </div>
+
+          <!-- Parent Lineage Entry Form (15 Ancestor Slots) -->
+          <div id="parentLineageFields" style="display:none;">
+            <div id="lineageCardsContainer" class="pedigree-box-grid"></div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <button type="submit" class="btn btn-gold">Save Record</button>
+            <button type="button" class="btn" onclick="resetForm()">Clear Form</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- BACKUP TAB -->
+    <section id="tab-backup" class="tab-panel" style="display:none;">
+      <div class="card">
+        <div class="section-header">
+          <h2 class="section-title">Backup &amp; Restore</h2>
+          <span class="section-meta">LocalStorage Offline Persistence</span>
+        </div>
+        <p class="bird-line" style="margin-bottom:14px;">
+          All records are stored locally in this browser (<strong>localStorage</strong>) and work offline once loaded. Export a JSON or CSV backup regularly.
+        </p>
+        <div class="toolbar" style="margin-bottom:0;">
+          <button type="button" class="btn btn-gold" onclick="exportJSON()">Export JSON</button>
+          <button type="button" class="btn" onclick="exportCSV()">Export CSV</button>
+          <label class="btn" style="cursor:pointer;">
+            Import JSON
+            <input type="file" id="jsonImportInput" accept=".json,application/json" style="display:none;" onchange="importJSON(event)" />
+          </label>
+          <button type="button" class="btn" onclick="loadSampleData(true)">Load Sample Data</button>
+          <button type="button" class="btn btn-danger" onclick="clearAllData()">Clear Data</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PURE WHITE 4-COLUMN A4 LANDSCAPE PEDIGREE MODAL -->
+  <div id="pedigreeModal" class="pedigree-modal-backdrop" onclick="handleBackdropClick(event)">
+    <div class="pedigree-controls">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-gold" onclick="window.print()">Print / Save PDF (A4 Landscape)</button>
+        <button type="button" class="btn" onclick="closePedigree()">Close</button>
+      </div>
+      <span class="section-meta">A4 Landscape (297mm &times; 210mm)</span>
+    </div>
+
+    <div id="pedigreeSheet" class="pedigree-sheet">
+      <div class="cert-header">
+        <span id="certHeadline" class="cert-subject-headline">Loft Mahmoud Awed</span>
+        <span class="cert-loft-info">Loft Mahmoud Awed &bull; Tanta &bull; 01069696229</span>
+      </div>
+      <div id="pedigreeGrid" class="pedigree-4col"></div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'loft_mahmoud_awed_v1';
+
+    // 1 Subject + 2 Parents + 4 Grandparents + 8 Great-Grandparents = 15 lineage slots
+    const LINEAGE_SLOTS = [
+      { key: 'self', label: 'Subject Bird' },
+      { key: 'sire', label: 'Sire (Father)' },
+      { key: 'dam', label: 'Dam (Mother)' },
+      { key: 'pgs', label: 'Paternal Grand-Sire' },
+      { key: 'pgd', label: 'Paternal Grand-Dam' },
+      { key: 'mgs', label: 'Maternal Grand-Sire' },
+      { key: 'mgd', label: 'Maternal Grand-Dam' },
+      { key: 'pggs', label: 'P.G.G. Sire (1)' },
+      { key: 'pggd', label: 'P.G.G. Dam (2)' },
+      { key: 'pgms', label: 'P.G.M. Sire (3)' },
+      { key: 'pgmd', label: 'P.G.M. Dam (4)' },
+      { key: 'mggs', label: 'M.G.G. Sire (5)' },
+      { key: 'mggd', label: 'M.G.G. Dam (6)' },
+      { key: 'mgms', label: 'M.G.M. Sire (7)' },
+      { key: 'mgmd', label: 'M.G.M. Dam (8)' }
+    ];
+
+    let state = {
+      offspring: [],
+      parents: []
+    };
+
+    function createEmptyLineage() {
+      const obj = {};
+      for (const s of LINEAGE_SLOTS) {
+        obj[s.key] = { ring: '', year: '', details: '' };
+      }
+      return obj;
+    }
+
+    function createSampleDataset() {
+      return {
+        parents: [
+          {
+            id: 'par_sample_sire_1',
+            lineage: {
+              self: {
+                ring: 'EGY-2021-502',
+                year: '2021',
+                details: 'Son Olympic Blue | Janssen • De Rauw\nBlue Bar\n1st Club 240km Tanta\n2nd District 310km\nSire of 3 Club Winners'
+              },
+              sire: {
+                ring: 'BELG-2017-6120419',
+                year: '2017',
+                details: 'Olympic Bear | De Rauw-Sablon\nBlue Bar\n1st Ace Middle Distance 2018\n3x 1st Prize Winner'
+              },
+              dam: {
+                ring: 'NL-2018-1940288',
+                year: '2018',
+                details: 'Beauty Boucre | Koopman • Van Loon\nBlue Check\n1st Ace Loft Hen 2019\nDam of Olympiad Hopeful'
+              },
+              pgs: {
+                ring: 'BELG-2013-4081210',
+                year: '2013',
+                details: 'Mr Sezagie | De Rauw-Sablon\nBlue Check\nNational Top 15 520km'
+              },
+              pgd: {
+                ring: 'BELG-2014-4190332',
+                year: '2014',
+                details: 'Late Schoonheid | Rik Hermans\nBlue Bar\nDam of 4 First Prize Winners'
+              },
+              mgs: {
+                ring: 'NL-2014-5108841',
+                year: '2014',
+                details: 'Zoon Superior | Koopman\nMealy\n1st 180km • 3rd 280km'
+              },
+              mgd: {
+                ring: 'NL-2015-1402917',
+                year: '2015',
+                details: 'Miss Boucre | Van Loon\nBlue Check\n1st Provincial 410km'
+              },
+              pggs: { ring: 'BELG-2009-2019412', year: '2009', details: 'Blue Bar | Foundation Sire\n1st National Ace Line' },
+              pggd: { ring: 'BELG-2010-2190844', year: '2010', details: 'Blue Check | Foundation Dam\nSuper Breeding Hen' },
+              pgms: { ring: 'BELG-2010-3091125', year: '2010', details: 'Dark Check | Marathon Line\nTop 10 Long Distance' },
+              pgmd: { ring: 'BELG-2011-3184029', year: '2011', details: 'Blue Bar | Ace Hen Line\nProven Stock Dam' },
+              mggs: { ring: 'NL-2010-1209384', year: '2010', details: 'Mealy | Sprinter Line\n6x 1st Club Winner' },
+              mggd: { ring: 'NL-2011-1384720', year: '2011', details: 'Blue | Proven Dam\nDirect Kleine Dirk Line' },
+              mgms: { ring: 'NL-2011-1592830', year: '2011', details: 'Blue Check | Stock Sire\nGrandson Golden Lady' },
+              mgmd: { ring: 'NL-2012-1604921', year: '2012', details: 'Blue Bar | Loft Hen\nDam of 2 Ace Pigeons' }
+            }
+          },
+          {
+            id: 'par_sample_dam_1',
+            lineage: {
+              self: {
+                ring: 'EGY-2022-714',
+                year: '2022',
+                details: 'Blauwe Argenton | Heremans-Ceusters\nBlue Check\n1st Loft Youngster 2022\n2nd Club 200km • 4th 350km'
+              },
+              sire: {
+                ring: 'DV-2018-08419-24',
+                year: '2018',
+                details: 'Asduif 8419 | Euro Diamond\nBlue Check\n1st Ace Pigeon 2019\n22 Prizes in First 10%'
+              },
+              dam: {
+                ring: 'EGY-2019-208',
+                year: '2019',
+                details: 'Miss Tanta | Tanta Loft Champion\nBlue Bar\n1st 260km • 2nd 350km\nSuper Breeding Hen'
+              },
+              pgs: {
+                ring: 'DV-2014-04129-11',
+                year: '2014',
+                details: 'Genaaide 4129 | Heremans\nBlue Bar\n18 Prizes in 2 Seasons'
+              },
+              pgd: {
+                ring: 'DV-2015-09102-67',
+                year: '2015',
+                details: 'Lief Duifke | De Klak\nBlue Check\nDirect Stock Daughter'
+              },
+              mgs: {
+                ring: 'EGY-2015-063',
+                year: '2015',
+                details: 'Blue Flash | Delta Ace Sire\nBlue Check\nConsistent Distance Cock'
+              },
+              mgd: {
+                ring: 'EGY-2016-119',
+                year: '2016',
+                details: 'Miss Cacharel | Proven Hen\nBlue Bar\nDam of Club Winners'
+              },
+              pggs: { ring: 'DV-2010-01234-05', year: '2010', details: 'Blue Check | Olympiade 003 Line\nTop Sprint Sire' },
+              pggd: { ring: 'DV-2011-05678-19', year: '2011', details: 'Blue Bar | Top Dam\nDaughter Jan' },
+              pgms: { ring: 'DV-2011-07890-42', year: '2011', details: 'Blue Check | Speed Line\n1st Regional 290km' },
+              pgmd: { ring: 'DV-2012-09876-88', year: '2012', details: 'Blue | Stock Hen\nFoundation Breeder' },
+              mggs: { ring: 'EGY-2011-019', year: '2011', details: 'Blue Check | Nile Ace\n1st 420km Assiut' },
+              mggd: { ring: 'EGY-2012-045', year: '2012', details: 'Blue Bar | Loft Dam\nProven Breeding Hen' },
+              mgms: { ring: 'EGY-2012-081', year: '2012', details: 'Blue Check | Distance Sire\nTop 5 National' },
+              mgmd: { ring: 'EGY-2013-097', year: '2013', details: 'Blue Bar | Stock Hen\nMother of Winners' }
+            }
+          }
+        ],
+        offspring: [
+          {
+            id: 'off_sample_101',
+            ring: 'EGY-2025-101',
+            year: '2025',
+            gender: 'Male',
+            sireId: 'par_sample_sire_1',
+            damId: 'par_sample_dam_1',
+            notes: 'Blue Bar • Janssen x Heremans\n1st Club 220km Tanta-Cairo\n3rd District 310km\nStrong keel, bright pearl eye, fast trap'
+          },
+          {
+            id: 'off_sample_102',
+            ring: 'EGY-2025-102',
+            year: '2025',
+            gender: 'Female',
+            sireId: 'par_sample_sire_1',
+            damId: 'par_sample_dam_1',
+            notes: 'Blue Check • Full Sister to 101\n2nd Loft 260km Race\nBalanced body, supple wing, rich violet eye'
+          },
+          {
+            id: 'off_sample_103',
+            ring: 'EGY-2026-103',
+            year: '2026',
+            gender: 'Male',
+            sireId: 'par_sample_sire_1',
+            damId: 'par_sample_dam_1',
+            notes: 'Blue Bar • Youngster 2026\n1st Training Toss 140km\nReserved for 2026 Young Bird Derby'
+          }
+        ]
+      };
+    }
+
+    function loadSampleData(showNotice = false) {
+      const sample = createSampleDataset();
+      state.parents = sample.parents;
+      state.offspring = sample.offspring;
+      saveState();
+      renderOffspring();
+      renderParents();
+      populateParentDropdowns();
+      if (showNotice) {
+        showStatus('Sample test data loaded.');
+      }
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          loadSampleData(false);
+          return;
+        }
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') {
+          loadSampleData(false);
+          return;
+        }
+        state.offspring = Array.isArray(parsed.offspring) ? parsed.offspring : [];
+        state.parents = Array.isArray(parsed.parents) ? parsed.parents : [];
+      } catch (e) {
+        showStatus('Unable to read saved browser storage.', 'error');
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        showStatus('Storage quota exceeded or blocked by browser.', 'error');
+      }
+    }
+
+    function showStatus(msg, type = 'success') {
+      const banner = document.getElementById('statusBanner');
+      banner.textContent = msg;
+      banner.className = 'status-msg show ' + (type === 'error' ? 'status-error' : 'status-success');
+      clearTimeout(showStatus._timer);
+      showStatus._timer = setTimeout(() => {
+        banner.className = 'status-msg';
+      }, 3400);
+    }
+
+    function switchTab(tabName) {
+      const validTabs = ['offspring', 'parents', 'add', 'backup'];
+      const target = validTabs.includes(tabName) ? tabName : 'offspring';
+
+      for (const name of validTabs) {
+        const panel = document.getElementById('tab-' + name);
+        if (panel) panel.style.display = name === target ? 'block' : 'none';
+      }
+
+      document.querySelectorAll('.nav-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.tab === target);
+      });
+
+      if (target === 'offspring') renderOffspring();
+      if (target === 'parents') renderParents();
+      if (target === 'add') populateParentDropdowns();
+    }
+
+    function buildLineageInputs(lineageData = null) {
+      const container = document.getElementById('lineageCardsContainer');
+      const data = lineageData || createEmptyLineage();
+      container.innerHTML = LINEAGE_SLOTS.map((slot) => {
+        const item = data[slot.key] || { ring: '', year: '', details: '' };
+        return `
+          <div class="ancestor-card">
+            <div class="ancestor-title">${escapeHtml(slot.label)}</div>
+            <div class="ancestor-fields">
+              <input type="text" id="lin_${slot.key}_ring" placeholder="Ring Number" value="${escapeAttr(item.ring)}" />
+              <input type="text" id="lin_${slot.key}_year" placeholder="Year" value="${escapeAttr(item.year)}" />
+              <textarea id="lin_${slot.key}_details" class="ancestor-details" placeholder="Name / Bloodline / Race Results">${escapeHtml(item.details)}</textarea>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function readLineageInputs() {
+      const data = {};
+      for (const slot of LINEAGE_SLOTS) {
+        data[slot.key] = {
+          ring: document.getElementById(`lin_${slot.key}_ring`).value.trim(),
+          year: document.getElementById(`lin_${slot.key}_year`).value.trim(),
+          details: document.getElementById(`lin_${slot.key}_details`).value.trim()
+        };
+      }
+      return data;
+    }
+
+    function setFormMode(mode) {
+      const isParent = mode === 'parent';
+      document.getElementById('recordType').value = isParent ? 'parent' : 'offspring';
+      document.getElementById('offspringFields').style.display = isParent ? 'none' : 'block';
+      document.getElementById('parentLineageFields').style.display = isParent ? 'block' : 'none';
+      document.getElementById('modeOffspringBtn').className = !isParent ? 'btn btn-gold' : 'btn';
+      document.getElementById('modeParentBtn').className = isParent ? 'btn btn-gold' : 'btn';
+      document.getElementById('ringNumber').required = !isParent;
+      document.getElementById('birdYear').required = !isParent;
+
+      if (isParent) {
+        buildLineageInputs();
+      } else {
+        populateParentDropdowns();
+      }
+    }
+
+    function populateParentDropdowns(selectedSireId = '', selectedDamId = '') {
+      const sireSelect = document.getElementById('sireSelect');
+      const damSelect = document.getElementById('damSelect');
+
+      const optionsHtml = state.parents.map((p) => {
+        const selfObj = p.lineage?.self || {};
+        const label = [
+          selfObj.ring || 'Unnamed Parent',
+          selfObj.year ? `(${selfObj.year})` : '',
+          selfObj.details ? selfObj.details.split('\n')[0] : ''
+        ].filter(Boolean).join(' • ');
+        return `<option value="${escapeAttr(p.id)}">${escapeHtml(label)}</option>`;
+      }).join('');
+
+      sireSelect.innerHTML = '<option value="">-- Select Sire --</option>' + optionsHtml;
+      damSelect.innerHTML = '<option value="">-- Select Dam --</option>' + optionsHtml;
+      sireSelect.value = selectedSireId || '';
+      damSelect.value = selectedDamId || '';
+    }
+
+    function openAddOffspring() {
+      resetForm();
+      setFormMode('offspring');
+      document.getElementById('formHeading').textContent = 'Add Offspring';
+      switchTab('add');
+    }
+
+    function openAddParent() {
+      resetForm();
+      setFormMode('parent');
+      document.getElementById('formHeading').textContent = 'Add Parent Lineage';
+      switchTab('add');
+    }
+
+    function resetForm() {
+      document.getElementById('editId').value = '';
+      document.getElementById('ringNumber').value = '';
+      document.getElementById('birdYear').value = '';
+      document.getElementById('birdGender').value = 'Male';
+      document.getElementById('birdNotes').value = '';
+      document.getElementById('formHeading').textContent = 'Add New Record';
+      populateParentDropdowns();
+      buildLineageInputs(createEmptyLineage());
+    }
+
+    function saveRecord(event) {
+      event.preventDefault();
+      const mode = document.getElementById('recordType').value;
+      const editId = document.getElementById('editId').value;
+
+      if (mode === 'offspring') {
+        const ring = document.getElementById('ringNumber').value.trim();
+        const year = document.getElementById('birdYear').value.trim();
+        const gender = document.getElementById('birdGender').value;
+        const sireId = document.getElementById('sireSelect').value;
+        const damId = document.getElementById('damSelect').value;
+        const notes = document.getElementById('birdNotes').value.trim();
+
+        if (!ring || !year) {
+          showStatus('Please enter Ring Number and Year.', 'error');
+          return;
+        }
+
+        if (editId) {
+          const idx = state.offspring.findIndex((b) => b.id === editId);
+          if (idx !== -1) {
+            state.offspring[idx] = { ...state.offspring[idx], ring, year, gender, sireId, damId, notes };
+          }
+        } else {
+          state.offspring.unshift({
+            id: 'off_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+            ring,
+            year,
+            gender,
+            sireId,
+            damId,
+            notes
+          });
+        }
+        saveState();
+        showStatus('Offspring record saved.');
+        resetForm();
+        switchTab('offspring');
+      } else {
+        const lineage = readLineageInputs();
+        const hasAny = Object.values(lineage).some((v) => v.ring || v.year || v.details);
+        if (!hasAny) {
+          showStatus('Please enter lineage details before saving.', 'error');
+          return;
+        }
+
+        if (editId) {
+          const idx = state.parents.findIndex((p) => p.id === editId);
+          if (idx !== -1) {
+            state.parents[idx] = { ...state.parents[idx], lineage };
+          }
+        } else {
+          state.parents.unshift({
+            id: 'par_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+            lineage
+          });
+        }
+        saveState();
+        showStatus('Parent lineage saved.');
+        resetForm();
+        switchTab('parents');
+      }
+    }
+
+    function editOffspring(id) {
+      const bird = state.offspring.find((b) => b.id === id);
+      if (!bird) return;
+      setFormMode('offspring');
+      document.getElementById('editId').value = bird.id;
+      document.getElementById('ringNumber').value = bird.ring || '';
+      document.getElementById('birdYear').value = bird.year || '';
+      document.getElementById('birdGender').value = bird.gender || 'Male';
+      document.getElementById('birdNotes').value = bird.notes || '';
+      populateParentDropdowns(bird.sireId || '', bird.damId || '');
+      document.getElementById('formHeading').textContent = 'Edit Offspring: ' + (bird.ring || '');
+      switchTab('add');
+    }
+
+    function editParent(id) {
+      const parent = state.parents.find((p) => p.id === id);
+      if (!parent) return;
+      setFormMode('parent');
+      document.getElementById('editId').value = parent.id;
+      buildLineageInputs(parent.lineage);
+      const label = parent.lineage?.self?.ring || 'Parent';
+      document.getElementById('formHeading').textContent = 'Edit Parent Lineage: ' + label;
+      switchTab('add');
+    }
+
+    function deleteOffspring(id) {
+      state.offspring = state.offspring.filter((b) => b.id !== id);
+      saveState();
+      renderOffspring();
+      showStatus('Offspring deleted.');
+    }
+
+    function deleteParent(id) {
+      state.parents = state.parents.filter((p) => p.id !== id);
+      saveState();
+      renderParents();
+      showStatus('Parent lineage deleted.');
+    }
+
+    function getParentById(id) {
+      return state.parents.find((p) => p.id === id) || null;
+    }
+
+    function formatNodeSummary(node) {
+      if (!node || (!node.ring && !node.year && !node.details)) return '—';
+      const firstDetail = node.details ? node.details.split('\n')[0] : '';
+      const base = [node.ring, node.year ? `(${node.year})` : ''].filter(Boolean).join(' ');
+      return firstDetail ? `${base} • ${firstDetail}` : base;
+    }
+
+    function inferSymbol(genderVal, detailsVal = '') {
+      const g = String(genderVal || '').toLowerCase();
+      if (g === 'male' || g === 'm' || g === '♂') return '♂';
+      if (g === 'female' || g === 'f' || g === '♀') return '♀';
+      const d = String(detailsVal || '').toLowerCase();
+      if (d.includes('hen') || d.includes('dam') || d.includes('female')) return '♀';
+      if (d.includes('cock') || d.includes('sire') || d.includes('male')) return '♂';
+      return '';
+    }
+
+    function formatCertCell(node, fallbackRing = '—', symbol = '') {
+      if (!node || (!node.ring && !node.year && !node.details)) {
+        return { ring: fallbackRing, symbol, title: '', sub: '' };
+      }
+
+      const rawLines = String(node.details || '')
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean);
+
+      const title = rawLines.length > 0 ? rawLines[0] : (node.year ? `Year ${node.year}` : '');
+      const subParts = [];
+      if (node.year && rawLines.length > 0) {
+        subParts.push(`Year: ${node.year}`);
+      }
+      if (rawLines.length > 1) {
+        subParts.push(...rawLines.slice(1));
+      }
+
+      return {
+        ring: node.ring || fallbackRing,
+        symbol,
+        title,
+        sub: subParts.join('\n')
+      };
+    }
+
+    // Automatically inherits 4 generations from selected Sire and Dam parent lineages
+    function buildFullOffspringPedigree(bird) {
+      const sireRec = bird.sireId ? getParentById(bird.sireId) : null;
+      const damRec = bird.damId ? getParentById(bird.damId) : null;
+
+      const sLin = sireRec?.lineage || createEmptyLineage();
+      const dLin = damRec?.lineage || createEmptyLineage();
+
+      const symbol = inferSymbol(bird.gender, bird.notes);
+      const col1 = [
+        {
+          ring: bird.ring || '—',
+          symbol,
+          title: [bird.gender || '', bird.year ? `Year ${bird.year}` : ''].filter(Boolean).join(' • '),
+          sub: bird.notes || ''
+        }
+      ];
+
+      const col2 = [
+        formatCertCell(sLin.self, '—', '♂'),
+        formatCertCell(dLin.self, '—', '♀')
+      ];
+
+      const col3 = [
+        formatCertCell(sLin.sire, '—', '♂'),
+        formatCertCell(sLin.dam, '—', '♀'),
+        formatCertCell(dLin.sire, '—', '♂'),
+        formatCertCell(dLin.dam, '—', '♀')
+      ];
+
+      const col4 = [
+        formatCertCell(sLin.pgs, '—', '♂'),
+        formatCertCell(sLin.pgd, '—', '♀'),
+        formatCertCell(sLin.mgs, '—', '♂'),
+        formatCertCell(sLin.mgd, '—', '♀'),
+        formatCertCell(dLin.pgs, '—', '♂'),
+        formatCertCell(dLin.pgd, '—', '♀'),
+        formatCertCell(dLin.mgs, '—', '♂'),
+        formatCertCell(dLin.mgd, '—', '♀')
+      ];
+
+      const headline = `${bird.ring || 'Pedigree'}${bird.year ? ' (' + bird.year + ')' : ''}${bird.gender ? ' ' + (bird.gender === 'Male' ? 'M' : 'F') : ''}`;
+      return { columns: [col1, col2, col3, col4], headline };
+    }
+
+    function buildParentPedigree(parentRec) {
+      const lin = parentRec.lineage || createEmptyLineage();
+      const selfCell = formatCertCell(lin.self, '—', inferSymbol('', lin.self?.details));
+      const col1 = [selfCell];
+      const col2 = [
+        formatCertCell(lin.sire, '—', '♂'),
+        formatCertCell(lin.dam, '—', '♀')
+      ];
+      const col3 = [
+        formatCertCell(lin.pgs, '—', '♂'),
+        formatCertCell(lin.pgd, '—', '♀'),
+        formatCertCell(lin.mgs, '—', '♂'),
+        formatCertCell(lin.mgd, '—', '♀')
+      ];
+      const col4 = [
+        formatCertCell(lin.pggs, '—', '♂'),
+        formatCertCell(lin.pggd, '—', '♀'),
+        formatCertCell(lin.pgms, '—', '♂'),
+        formatCertCell(lin.pgmd, '—', '♀'),
+        formatCertCell(lin.mggs, '—', '♂'),
+        formatCertCell(lin.mggd, '—', '♀'),
+        formatCertCell(lin.mgms, '—', '♂'),
+        formatCertCell(lin.mgmd, '—', '♀')
+      ];
+
+      const headline = `${lin.self?.ring || 'Pedigree'}${lin.self?.year ? ' (' + lin.self.year + ')' : ''}`;
+      return { columns: [col1, col2, col3, col4], headline };
+    }
+
+    function renderPedigreeNodeHtml(n) {
+      return `
+        <div class="ped-node">
+          <div class="ped-node-top">
+            <span class="ped-ring">${escapeHtml(n.ring)}</span>
+            ${n.symbol ? `<span class="ped-symbol">${escapeHtml(n.symbol)}</span>` : ''}
+          </div>
+          ${n.title ? `<div class="ped-title">${escapeHtml(n.title)}</div>` : ''}
+          ${n.sub ? `<div class="ped-sub">${escapeHtml(n.sub)}</div>` : ''}
+        </div>
+      `;
+    }
+
+    function openPedigree(type, id) {
+      const record = type === 'offspring'
+        ? state.offspring.find((b) => b.id === id)
+        : state.parents.find((p) => p.id === id);
+
+      if (!record) {
+        showStatus('Record not found.', 'error');
+        return;
+      }
+
+      const data = type === 'offspring'
+        ? buildFullOffspringPedigree(record)
+        : buildParentPedigree(record);
+
+      document.getElementById('certHeadline').textContent = data.headline;
+
+      const grid = document.getElementById('pedigreeGrid');
+      grid.innerHTML = data.columns.map((colNodes, colIdx) => {
+        if (colIdx === 0) {
+          return `
+            <div class="ped-col">
+              <div class="ped-col-1-wrap">
+                ${colNodes.map(renderPedigreeNodeHtml).join('')}
+                <div class="loft-contact-block">
+                  <strong>Loft Mahmoud Awed</strong><br />
+                  Tanta, Egypt<br />
+                  Tel.: 01069696229
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        const pairs = [];
+        for (let i = 0; i < colNodes.length; i += 2) {
+          const pairHtml = colNodes.slice(i, i + 2).map(renderPedigreeNodeHtml).join('');
+          pairs.push(`<div class="ped-pair">${pairHtml}</div>`);
+        }
+        return `<div class="ped-col">${pairs.join('')}</div>`;
+      }).join('');
+
+      document.getElementById('pedigreeModal').classList.add('open');
+    }
+
+    function closePedigree() {
+      document.getElementById('pedigreeModal').classList.remove('open');
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'pedigreeModal') {
+        closePedigree();
+      }
+    }
+
+    function renderOffspring() {
+      const q = document.getElementById('offspringSearch').value.trim().toLowerCase();
+      const genderFilter = document.getElementById('offspringGenderFilter').value;
+
+      const filtered = state.offspring.filter((b) => {
+        if (genderFilter !== 'all' && b.gender !== genderFilter) return false;
+        if (!q) return true;
+        const sireName = formatNodeSummary(getParentById(b.sireId)?.lineage?.self).toLowerCase();
+        const damName = formatNodeSummary(getParentById(b.damId)?.lineage?.self).toLowerCase();
+        return (
+          (b.ring || '').toLowerCase().includes(q) ||
+          (b.year || '').toLowerCase().includes(q) ||
+          (b.notes || '').toLowerCase().includes(q) ||
+          sireName.includes(q) ||
+          damName.includes(q)
+        );
+      });
+
+      document.getElementById('offspringCount').textContent = `${filtered.length} bird(s)`;
+      const listEl = document.getElementById('offspringList');
+
+      if (!filtered.length) {
+        listEl.innerHTML = '<div class="empty-state">No offspring records found. Click "+ Add Offspring" to create one.</div>';
+        return;
+      }
+
+      listEl.innerHTML = filtered.map((b) => {
+        const sireText = formatNodeSummary(getParentById(b.sireId)?.lineage?.self);
+        const damText = formatNodeSummary(getParentById(b.damId)?.lineage?.self);
+        const badgeClass = b.gender === 'Female' ? 'badge-female' : 'badge-male';
+
+        return `
+          <article class="bird-card">
+            <div>
+              <div class="bird-top">
+                <div>
+                  <div class="bird-ring">${escapeHtml(b.ring)}</div>
+                  <div class="bird-year">Year: ${escapeHtml(b.year)}</div>
+                </div>
+                <span class="badge ${badgeClass}">${escapeHtml(b.gender || 'Male')}</span>
+              </div>
+              <div class="bird-line"><strong>Sire:</strong> ${escapeHtml(sireText)}</div>
+              <div class="bird-line"><strong>Dam:</strong> ${escapeHtml(damText)}</div>
+              ${b.notes ? `<div class="bird-notes">${escapeHtml(b.notes)}</div>` : ''}
+            </div>
+            <div class="card-actions">
+              <button type="button" class="btn btn-gold" onclick="openPedigree('offspring', '${escapeAttr(b.id)}')">Pedigree</button>
+              <button type="button" class="btn" onclick="editOffspring('${escapeAttr(b.id)}')">Edit</button>
+              <button type="button" class="btn btn-danger" onclick="deleteOffspring('${escapeAttr(b.id)}')">Delete</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function renderParents() {
+      const q = document.getElementById('parentsSearch').value.trim().toLowerCase();
+      const filtered = state.parents.filter((p) => {
+        if (!q) return true;
+        return JSON.stringify(p.lineage || {}).toLowerCase().includes(q);
+      });
+
+      document.getElementById('parentsCount').textContent = `${filtered.length} lineage(s)`;
+      const listEl = document.getElementById('parentsList');
+
+      if (!filtered.length) {
+        listEl.innerHTML = '<div class="empty-state">No parent lineages found. Click "+ Add Parent Lineage" to add one.</div>';
+        return;
+      }
+
+      listEl.innerHTML = filtered.map((p) => {
+        const selfObj = p.lineage?.self || {};
+        const sireObj = p.lineage?.sire || {};
+        const damObj = p.lineage?.dam || {};
+        const subtitle = [selfObj.year, selfObj.details ? selfObj.details.split('\n')[0] : '']
+          .filter(Boolean)
+          .join(' • ') || 'Breeding Stock';
+
+        return `
+          <article class="bird-card">
+            <div>
+              <div class="bird-top">
+                <div>
+                  <div class="bird-ring">${escapeHtml(selfObj.ring || 'Unnamed Parent')}</div>
+                  <div class="bird-year">${escapeHtml(subtitle)}</div>
+                </div>
+                <span class="badge badge-parent">Parent</span>
+              </div>
+              <div class="bird-line"><strong>Sire:</strong> ${escapeHtml(formatNodeSummary(sireObj))}</div>
+              <div class="bird-line"><strong>Dam:</strong> ${escapeHtml(formatNodeSummary(damObj))}</div>
+            </div>
+            <div class="card-actions">
+              <button type="button" class="btn btn-gold" onclick="openPedigree('parent', '${escapeAttr(p.id)}')">Pedigree</button>
+              <button type="button" class="btn" onclick="editParent('${escapeAttr(p.id)}')">Edit</button>
+              <button type="button" class="btn btn-danger" onclick="deleteParent('${escapeAttr(p.id)}')">Delete</button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function exportJSON() {
+      const payload = JSON.stringify({
+        loft: 'Loft Mahmoud Awed',
+        location: 'Tanta',
+        phone: '01069696229',
+        exportedAt: new Date().toISOString(),
+        offspring: state.offspring,
+        parents: state.parents
+      }, null, 2);
+      downloadFile(payload, 'loft-mahmoud-awed-backup.json', 'application/json');
+      showStatus('JSON backup downloaded.');
+    }
+
+    function exportCSV() {
+      const rows = [['Type', 'Ring', 'Year', 'Gender', 'Sire', 'Dam', 'Notes']];
+      for (const b of state.offspring) {
+        const sireText = formatNodeSummary(getParentById(b.sireId)?.lineage?.self);
+        const damText = formatNodeSummary(getParentById(b.damId)?.lineage?.self);
+        rows.push(['Offspring', b.ring || '', b.year || '', b.gender || '', sireText, damText, b.notes || '']);
+      }
+      for (const p of state.parents) {
+        const l = p.lineage || {};
+        rows.push([
+          'Parent',
+          l.self?.ring || '',
+          l.self?.year || '',
+          '',
+          formatNodeSummary(l.sire),
+          formatNodeSummary(l.dam),
+          l.self?.details || ''
+        ]);
+      }
+
+      const csvContent = rows
+        .map((r) => r.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+      downloadFile(csvContent, 'loft-mahmoud-awed.csv', 'text/csv;charset=utf-8;');
+      showStatus('CSV file downloaded.');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(String(reader.result || '{}'));
+          if (!Array.isArray(parsed.offspring) || !Array.isArray(parsed.parents)) {
+            showStatus('Invalid backup file format.', 'error');
+            return;
+          }
+          state.offspring = parsed.offspring;
+          state.parents = parsed.parents;
+          saveState();
+          renderOffspring();
+          renderParents();
+          populateParentDropdowns();
+          showStatus('Backup restored successfully.');
+        } catch (err) {
+          showStatus('Could not parse JSON file.', 'error');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function clearAllData() {
+      state.offspring = [];
+      state.parents = [];
+      saveState();
+      renderOffspring();
+      renderParents();
+      populateParentDropdowns();
+      showStatus('All records cleared.');
+    }
+
+    function downloadFile(content, filename, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function escapeAttr(str) {
+      return escapeHtml(str).replace(/'/g, '&#39;');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePedigree();
+      }
+    });
+
+    // Initialize Application
+    loadState();
+    buildLineageInputs(createEmptyLineage());
+    populateParentDropdowns();
+    renderOffspring();
+  </script>
+</body>
+</html>
